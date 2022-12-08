@@ -10,18 +10,23 @@
             <label for"name">Name</label>
             <input type="text" name="name" id="name">
             <label for"guests">Number of Guests</label>
-            <input type="number" name="guests" id="guests">
+            <input type="number" name="guests" id="guests" min="1" max="30">
             <label for"location">Room Location</label>
             <input type="text" name="location" id="location">
             <label for"description">Description</label>
             <textarea name="description" id="description" rows="2" cols="25"></textarea>
             <input type="submit" value="Add Event">
+            <label for"recurring">Recurring?</label>
+            <input type="checkbox" id="recurring", name="recurring">
         </form>
 
         {% for event in events %}
         <div>
             <p>
                 {{event.date}}, <b>name: </b> {{event.name}}, <b>guests: </b>{{event.guests}}, {{event.location}}, {{event.description}}
+                {% if event.recurring %}
+                <span> recurring: &#9989; </span>
+                {% endif %}
             </p>
         </div>
         {% endfor %}
